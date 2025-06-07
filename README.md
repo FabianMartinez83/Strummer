@@ -22,7 +22,8 @@ it also has two ADSR outs <br>
 (probably needed if you use modules like Qubit-Surface or the Rings to add more natural sounding).<br>
 It has also trigger outs. Obviously you can misuse the plugin as a sort of arpeggiator.
 
-Standard ins and out are **IN 1** --> UP. <br>
+Standard ins and out are <br>
+ **IN 1** --> UP. <br>
  **IN 2** --> DWN.  <br>
  **OUT1**--> CV (the sequenced, strummed notes) . <br>
  **OUT3&4**--> ADSR. <br>

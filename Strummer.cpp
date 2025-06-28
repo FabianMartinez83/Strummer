@@ -408,16 +408,18 @@ struct _strumAlgorithm : public _NT_algorithm {
 static const char* envShapeStrings[] = { "Linear", "Simple Exp", "Classic Exp", NULL };
 
 static const _NT_parameter parameters[] = {
-    { .name = "Trig Up", .min = 1, .max = 28, .def = 1, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
-    { .name = "Trig Down", .min = 1, .max = 28, .def = 2, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
-    { .name = "Strum Out", .min = 1, .max = 28, .def = 13, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
+    NT_PARAMETER_CV_INPUT("Trig UP", 1, 1)
+    NT_PARAMETER_CV_INPUT("Trig Down", 1, 2)
+    NT_PARAMETER_CV_INPUT("Strum Out", 1, 13)
+    
     { .name = "Scale", .min = 0, .max = NUM_SCALES-1, .def = 0, .unit = kNT_unitEnum, .scaling = 0, .enumStrings = all_scale_names },
     { .name = "Spacing ms", .min = 1, .max = 1000, .def = 100, .unit = kNT_unitMs, .scaling = 0, .enumStrings = NULL },
     { .name = "Strings", .min = 1, .max = SCALE_MAX_LEN, .def = 6, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
     { .name = "Transpose", .min = -48, .max = 48, .def = 0, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
     { .name = "Mask Rotate", .min = -15, .max = 15, .def = 0, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
-    { .name = "TUp-Out", .min = 1, .max = 28, .def = 15, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
-    { .name = "TDown-Out", .min = 1, .max = 28, .def = 16, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
+    NT_PARAMETER_CV_OUTPUT("TUp Out", 1, 15)
+    NT_PARAMETER_CV_OUTPUT("TDown Out", 1, 16)
+    
     { .name = "Attack ms", .min = 0, .max = 10000, .def = 0, .unit = kNT_unitMs, .scaling = 0, .enumStrings = NULL },
     { .name = "Decay ms", .min = 0, .max = 10000, .def = 0, .unit = kNT_unitMs, .scaling = 0, .enumStrings = NULL },
     { .name = "Sustain %", .min = 0, .max = 100, .def = 100, .unit = kNT_unitPercent, .scaling = 2, .enumStrings = NULL },
@@ -425,8 +427,9 @@ static const _NT_parameter parameters[] = {
     { .name = "Env Shape", .min = 0, .max = 2, .def = 0, .unit = kNT_unitEnum, .scaling = 0, .enumStrings = envShapeStrings },
     { .name = "Env Exponent", .min = 1, .max = 8, .def = 2, .unit = kNT_unitNone, .scaling = 2, .enumStrings = NULL },
     { .name = "Gate Len ms", .min = 1, .max = 30000, .def = 100, .unit = kNT_unitMs, .scaling = 0, .enumStrings = NULL },
-    { .name = "GateUP_Out", .min = 1, .max = 28, .def = 17, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
-    { .name = "GateDN_Out", .min = 1, .max = 28, .def = 18, .unit = kNT_unitNone, .scaling = 0, .enumStrings = NULL },
+    NT_PARAMETER_CV_OUTPUT("GateUP_Out", 1, 17)
+    NT_PARAMETER_CV_OUTPUT("GateDN_Out", 1, 18)
+  
     
 };
 
@@ -600,9 +603,9 @@ _NT_algorithm* construct(const _NT_algorithmMemoryPtrs& ptrs, const _NT_algorith
 
 // --- Factory definition ---
 static const _NT_factory factory = {
-    .guid = NT_MULTICHAR('S','T','R','M'),
+    .guid = NT_MULTICHAR('F','M','S','M'),
     .name = "Strummer",
-    .description = "6notes strummer",
+    .description = "X-notes strummer",
     .numSpecifications = 0,
     .calculateRequirements = calculateRequirements,
     .construct = construct,
